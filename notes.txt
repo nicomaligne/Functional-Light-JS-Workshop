@@ -1,0 +1,25 @@
+
+
+
+point free function
+
+referential transparency = pure function, can be replaced by the returning value (same input same ouput no side effects)
+
+identity function = function that return what you give to it
+
+Recursion 
+    PTC : Proper Tail Calls = specs (PTC requires strict mode) <== still controversial part of ES6 / 2015 but not implemented except Safari
+    TCO : Tail Call Optimization = browser implementation
+    CPS : Continuation Passing Style = recusirve continuation by passing function (<== to work)
+    Trampolines : The condition to stop the recursivity is a function. Helps to no have that exceed the call stack frame (machine making machine)
+     template trampoline = 
+        function trampoline(fn) {
+            return function trampolined(...args) {
+                var result = fn(...args)
+                while (typeof result == 'function) {
+                    result = result()
+                }
+                return result
+            }
+        }
+  
